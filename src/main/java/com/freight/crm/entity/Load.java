@@ -1,11 +1,16 @@
 package com.freight.crm.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,44 +28,84 @@ public class Load {
 		private Long extraCost;
 	@Column(name="instruction")	
 		private String instruction;
+	
 	@ManyToOne
 	   private Customer customer;
+	
+	@ManyToMany(mappedBy = "Load")
+		private Set<Facility> posts = new HashSet<>();
+	
+	@OneToMany(mappedBy="Loads")
+		private Set<PickDrop> picksDrops ;
+
 	public int getArticleId() {
 		return articleId;
 	}
+
 	public void setArticleId(int articleId) {
 		this.articleId = articleId;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public Long getRate() {
 		return rate;
 	}
+
 	public void setRate(Long rate) {
 		this.rate = rate;
 	}
+
 	public Long getExtraCost() {
 		return extraCost;
 	}
+
 	public void setExtraCost(Long extraCost) {
 		this.extraCost = extraCost;
 	}
+
 	public String getInstruction() {
 		return instruction;
 	}
+
 	public void setInstruction(String instruction) {
 		this.instruction = instruction;
 	}
+
 	public Customer getCustomer() {
 		return customer;
 	}
+
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+
+	public Set<Facility> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(Set<Facility> posts) {
+		this.posts = posts;
+	}
+
+	public Set<PickDrop> getPicksDrops() {
+		return picksDrops;
+	}
+
+	public void setPicksDrops(Set<PickDrop> picksDrops) {
+		this.picksDrops = picksDrops;
+	}
+	
+	
+	
+	
+	
 	
 	
 }
