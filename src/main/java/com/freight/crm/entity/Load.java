@@ -24,7 +24,7 @@ public class Load {
 	@Column(name="instruction")	
 		private String instruction;
 	@ManyToOne
-	   private Customers customer;
+	   private Customer customer;
 	public int getArticleId() {
 		return articleId;
 	}
@@ -55,10 +55,10 @@ public class Load {
 	public void setInstruction(String instruction) {
 		this.instruction = instruction;
 	}
-	public Customers getCustomer() {
+	public Customer getCustomer() {
 		return customer;
 	}
-	public void setCustomer(Customers customer) {
+	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 	
