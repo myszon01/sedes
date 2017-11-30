@@ -1,4 +1,4 @@
-package com.freight.crm.sedes;
+package com.freight.crm;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
