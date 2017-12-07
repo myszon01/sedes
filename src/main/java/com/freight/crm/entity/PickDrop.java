@@ -1,5 +1,6 @@
 package com.freight.crm.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="picks_drops")
-public class PickDrop {
+public class PickDrop implements Serializable{
 
 	@ManyToOne
     @JoinColumn(name="facility_ID", nullable=false)

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+ 
+    <title>American Freight Logistics, inc.</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+             
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.2.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../static/css/guru.css"
+          th:href="@{css/guru.css}" rel="stylesheet" media="screen"/>
+     <link href="../static/css/index.css"
+          th:href="@{css/index.css}" rel="stylesheet" media="screen"/>     
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="/">American Freight Logictisc INC.</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/contact">Contact</a></li>
+        
+      </ul>
+      <ul class="nav navbar-nav">
+        <li><a><span class="glyphicon glyphicon-phone"></span>847-672-6351</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid text-center">    
+  <div class="row content">
+	 <div class="col-sm-12" style="padding: 0">
+	  <img class=".img-responsive" src="../static/img/highway.jpg" style="height: auto; max-width: 100%; "
+	             th:src="@{img/highway.jpg}"/>
+	  </div>
+  	
+  
+    <div class="col-sm-12 text-center"> 
+    <div id="aboutContent">
+      <h1>AMERICAN FREIGHT LOGISTICS, INC.</h1>
+      <h4 style=" padding-bottom: 2em;"><em>Working to propel your business to success</em></h4>
+     	<div>
+     	<img class=".img-responsive col-sm-4" src="../static/img/allInOne.jpg" 
+	             th:src="@{img/allInOne.jpg}"/>
+	              <p class="col-sm-8">American Freight Logistics is a fully integrated third-party 
+		      supply chain solutions provider. In our over 10 years in the industry,
+		       we have served customers around the world, across a variety of industries.  
+		       We put our customers' satisfaction first at American Freight and are dedicated 
+		       to providing customized, engineered solutions that ensure that every 
+		       load arrives on time and on budget. </p>
+     	</div>
+     
+      
+      
+           
+           
+      </div>     
+       <div>    
+      <ul class="list-unstyled">
+      	
+      	<li><h4>Services include:</h4>
+	      	<ul class="list-unstyled">
+		      <li><span class="glyphicon glyphicon-arrow-right"></span> Less-truck-truckload</li>
+		      <li><span class="glyphicon glyphicon-arrow-right"></span> Full truckload </li>
+		      <li><span class="glyphicon glyphicon-arrow-right"></span> Warehouse</li>
+		      <li><span class="glyphicon glyphicon-arrow-right"></span> Cross-dock</li>
+		    </ul>
+	     </li>
+	   </ul>
+	   </div>
+    </div>
+   
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  	<div class="text-center" >
+            <br></br>
+            <a  href="" target="_blank"><i  id="social-fb" class="fa fa-facebook-square fa-2x social"></i></a>
+            
+            <a href="/contact"><i id="social-em" class="fa fa-envelope-square fa-2x social"></i></a>
+            <br></br>
+            <p>© 2017 - American Freight Logistics, inc.</p>
+        </div>
+</footer>
+
+</body>
+</html>

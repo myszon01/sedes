@@ -3,6 +3,7 @@ package com.freight.crm.entity;
 
 
 
+import java.io.Serializable;
 import java.util.Set;
 
 
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Facilities")
-public class Facility {
+public class Facility implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="facility_ID")
@@ -37,7 +38,7 @@ public class Facility {
 		private String email;
 	@Column(name="description")	
 		private String description;
-	@OneToMany(mappedBy="Facilities")
+	@OneToMany(mappedBy="facility")
     	private Set<PickDrop> picksDrops ;
 	
 	

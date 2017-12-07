@@ -1,5 +1,7 @@
 package com.freight.crm.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Customers")
-public class Customer {
+public class Customer implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="customer_ID")
@@ -34,6 +36,7 @@ public class Customer {
 		private String fax;
 	@Column(name="description")	
 		private String description;
+	
 	public int getCustomerID() {
 		return customerID;
 	}
