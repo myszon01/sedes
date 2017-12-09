@@ -1,12 +1,14 @@
 package com.freight.crm.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -42,6 +44,8 @@ public class Customer implements Serializable{
 		private String fax;
 	@Column(name="description")	
 		private String description;
+	@OneToMany(mappedBy="customer")
+	 private Set<Load> loads ;
 	
 	public int getCustomerID() {
 		return customerID;
