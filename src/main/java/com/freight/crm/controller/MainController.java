@@ -19,9 +19,9 @@ public class MainController {
 	 
         return "index";
     }
-	@RequestMapping(value= {"/customerss"})
+	@RequestMapping(value= {"/customers"})
     String getCustomerPage(Model m){
-		m.addAttribute("customer", customerService.getCustomerById(0));
+		m.addAttribute("customer", customerService.getAllCustomers());
         return "customers";
     }
 }

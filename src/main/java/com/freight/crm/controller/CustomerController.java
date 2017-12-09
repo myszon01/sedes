@@ -17,7 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.freight.crm.entity.Customer;
 import com.freight.crm.service.ICustomerService;
 
-//@RestController
+@RestController
 public class CustomerController {
 	@Autowired
 	private ICustomerService customerService;
@@ -34,7 +34,7 @@ public class CustomerController {
 		return new ResponseEntity<List<Customer>>(list, HttpStatus.OK);
 	}
 	@PostMapping("customer")
-	public ResponseEntity<Void> addAcustomer(@RequestBody Customer customer, UriComponentsBuilder builder) {
+	public ResponseEntity<Void> addCustomer(@RequestBody Customer customer, UriComponentsBuilder builder) {
         boolean flag = customerService.addCustomer(customer);
         if (flag == false) {
         	return new ResponseEntity<Void>(HttpStatus.CONFLICT);
