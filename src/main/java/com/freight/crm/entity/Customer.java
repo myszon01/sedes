@@ -10,8 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Customers")
+@Table(name="customers")
 public class Customer implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="customer_ID")
@@ -26,6 +30,8 @@ public class Customer implements Serializable{
 		private String city;
 	@Column(name="state")	
 		private String state;
+	@Column(name="zip_code")	
+		private String zipcode;
 	@Column(name="address")	
 		private String address;
 	@Column(name="phone_number")	

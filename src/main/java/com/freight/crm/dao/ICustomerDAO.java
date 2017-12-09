@@ -10,6 +10,6 @@ public interface ICustomerDAO {
     void addCustomer(Customer customer);
     void updateCustomer(Customer customer);
     void deleteCustomer(int customerId);
-    boolean customerExists(int customerId);
+    boolean customerExists(String customerMC);
 
 }
