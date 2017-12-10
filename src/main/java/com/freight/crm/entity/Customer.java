@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="customers")
-public class Customer implements Serializable{
+public class Customer implements Serializable {
 	/**
 	 * 
 	 */
@@ -23,7 +23,7 @@ public class Customer implements Serializable{
 	@Column(name="customer_ID")
         private int customerID;  
 	@Column(name="name")
-        private String title;
+        private String name;
 	@Column(name="mc_number")	
 		private Long mcNumber;
 	@Column(name="dot_number")	
@@ -53,11 +53,11 @@ public class Customer implements Serializable{
 	public void setCustomerID(int customerID) {
 		this.customerID = customerID;
 	}
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String title) {
+		this.name = title;
 	}
 	public Long getMcNumber() {
 		return mcNumber;
@@ -112,6 +112,18 @@ public class Customer implements Serializable{
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+	public Set<Load> getLoads() {
+		return loads;
+	}
+	public void setLoads(Set<Load> loads) {
+		this.loads = loads;
 	}
 	
 	

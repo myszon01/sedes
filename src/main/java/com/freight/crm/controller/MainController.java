@@ -19,9 +19,14 @@ public class MainController {
 	 
         return "index";
     }
-	@RequestMapping(value= {"/customers"})
+	@RequestMapping(value= {"/test"})
+    String test(){
+	 
+        return "test";
+    }
+	@RequestMapping(value= {"/x"})
     String getCustomerPage(Model m){
-		m.addAttribute("customer", customerService.getAllCustomers());
+		//.addAttribute("cus", customerService.getAllCustomers());
         return "customers";
     }
 }

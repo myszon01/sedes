@@ -38,7 +38,7 @@ public class CustomerDAO implements ICustomerDAO{
 	@Override
 	public void updateCustomer(Customer customer) {
 		Customer cust = getCustomerById(customer.getCustomerID());
-		cust.setTitle(customer.getTitle());
+		cust.setName(customer.getName());
 		cust.setAddress(customer.getAddress());
 		entityManager.flush();
 		
