@@ -1,4 +1,7 @@
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import $ from 'jquery';
+import toastr from 'toastr';
 
 var Customer = React.createClass({
 	
