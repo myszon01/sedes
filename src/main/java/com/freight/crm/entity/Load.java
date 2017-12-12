@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="Loads")
 public class Load{
@@ -32,6 +34,7 @@ public class Load{
 		private String instruction;
 	
 	@ManyToOne
+	@JsonManagedReference
 	@JoinColumn(name="Customers_customer_id", nullable=false)
 	   private Customer customer;
 	

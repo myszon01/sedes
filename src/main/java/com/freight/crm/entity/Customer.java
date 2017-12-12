@@ -11,6 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.Data;
+
+
 @Entity
 @Table(name="customers")
 public class Customer implements Serializable {
@@ -44,6 +49,7 @@ public class Customer implements Serializable {
 		private String fax;
 	@Column(name="description")	
 		private String description;
+	@JsonBackReference
 	@OneToMany(mappedBy="customer")
 	 private Set<Load> loads ;
 	
