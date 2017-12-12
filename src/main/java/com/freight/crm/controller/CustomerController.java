@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 import com.freight.crm.entity.Customer;
-import com.freight.crm.service.ICustomerService;
+import com.freight.crm.service.CustomerJpaRepository;
+import com.freight.crm.service.CustomerJpaRepositoryCustom;
+
+
+
 
 @RestController
 public class CustomerController {
 	@Autowired
-	private ICustomerService customerService;
+	private CustomerJpaRepository customerService;
 	
 	@GetMapping("customer/{id}")
 	public ResponseEntity<Customer> getCustomerById(@PathVariable("id") Integer id) {
@@ -50,7 +54,7 @@ public class CustomerController {
 	}
 	@DeleteMapping("article/{id}")
 	public ResponseEntity<Void> deleteArticle(@PathVariable("id") Integer id) {
-		customerService.deleteCustomer(id);
+		//customerService.deleteCustomer(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 

@@ -57,9 +57,13 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(1);
+
 	var ReactDOM = __webpack_require__(37);
+
 	var client = __webpack_require__(184);
+
 	// end::vars[]
+
 
 	// tag::app[]
 
@@ -72,6 +76,7 @@
 			var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
 			_this.state = { employees: [] };
+
 			return _this;
 		}
 
@@ -81,22 +86,25 @@
 				var _this2 = this;
 
 				client({ method: 'GET', path: '/api/customers' }).done(function (response) {
+
 					_this2.setState({ employees: response.entity._embedded.customers });
 				});
 			}
 		}, {
 			key: 'render',
 			value: function render() {
+
 				return React.createElement(EmployeeList, { employees: this.state.employees });
 			}
 		}]);
 
 		return App;
 	}(React.Component);
+
 	// end::app[]
 
-	// tag::employee-list[]
 
+	// tag::employee-list[]
 
 	var EmployeeList = function (_React$Component2) {
 		_inherits(EmployeeList, _React$Component2);
@@ -110,9 +118,11 @@
 		_createClass(EmployeeList, [{
 			key: 'render',
 			value: function render() {
+
 				var employees = this.props.employees.map(function (employee) {
 					return React.createElement(Employee, { key: employee._links.self.href, employee: employee });
 				});
+
 				return React.createElement(
 					'table',
 					null,
@@ -146,10 +156,11 @@
 
 		return EmployeeList;
 	}(React.Component);
+
 	// end::employee-list[]
 
-	// tag::employee[]
 
+	// tag::employee[]
 
 	var Employee = function (_React$Component3) {
 		_inherits(Employee, _React$Component3);
@@ -163,6 +174,7 @@
 		_createClass(Employee, [{
 			key: 'render',
 			value: function render() {
+
 				return React.createElement(
 					'tr',
 					null,
@@ -187,12 +199,14 @@
 
 		return Employee;
 	}(React.Component);
+
 	// end::employee[]
+
 
 	// tag::render[]
 
-
 	ReactDOM.render(React.createElement(App, null), document.getElementById('root'));
+
 	// end::render[]
 
 /***/ }),
@@ -22013,15 +22027,21 @@
 	'use strict';
 
 	var rest = __webpack_require__(185);
+
 	var defaultRequest = __webpack_require__(213);
+
 	var mime = __webpack_require__(215);
+
 	var uriTemplateInterceptor = __webpack_require__(229);
+
 	var errorCode = __webpack_require__(230);
+
 	var baseRegistry = __webpack_require__(217);
 
 	var registry = baseRegistry.child();
 
 	registry.register('text/uri-list', __webpack_require__(231));
+
 	registry.register('application/hal+json', __webpack_require__(218));
 
 	module.exports = rest.wrap(mime, { registry: registry }).wrap(uriTemplateInterceptor).wrap(errorCode).wrap(defaultRequest, { headers: { 'Accept': 'application/hal+json' } });
@@ -26927,20 +26947,28 @@
 	var __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
 
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require) {
+
 		'use strict';
 
 		var interceptor = __webpack_require__(214);
 
 		return interceptor({
+
 			request: function request(_request /*, config, meta */) {
+
 				/* If the URI is a URI Template per RFC 6570 (http://tools.ietf.org/html/rfc6570), trim out the template part */
+
 				if (_request.path.indexOf('{') === -1) {
+
 					return _request;
 				} else {
+
 					_request.path = _request.path.split('{')[0];
+
 					return _request;
 				}
 			}
+
 		});
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -27004,26 +27032,36 @@
 	var __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
 
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
-		'use strict';
 
-		/* Convert a single or array of resources into "URI1\nURI2\nURI3..." */
+				'use strict';
 
-		return {
-			read: function read(str /*, opts */) {
-				return str.split('\n');
-			},
-			write: function write(obj /*, opts */) {
-				// If this is an Array, extract the self URI and then join using a newline
-				if (obj instanceof Array) {
-					return obj.map(function (resource) {
-						return resource._links.self.href;
-					}).join('\n');
-				} else {
-					// otherwise, just return the self URI
-					return obj._links.self.href;
-				}
-			}
-		};
+				/* Convert a single or array of resources into "URI1\nURI2\nURI3..." */
+
+				return {
+
+							read: function read(str /*, opts */) {
+
+										return str.split('\n');
+							},
+
+							write: function write(obj /*, opts */) {
+
+										// If this is an Array, extract the self URI and then join using a newline
+
+										if (obj instanceof Array) {
+
+													return obj.map(function (resource) {
+
+																return resource._links.self.href;
+													}).join('\n');
+										} else {
+													// otherwise, just return the self URI
+
+													return obj._links.self.href;
+										}
+							}
+
+				};
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ })
