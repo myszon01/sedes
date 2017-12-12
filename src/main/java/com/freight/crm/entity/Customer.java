@@ -3,8 +3,10 @@ package com.freight.crm.entity;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
-
+@Data
 @Entity
 @Table(name="customers")
 public class Customer implements Serializable {
@@ -49,8 +51,8 @@ public class Customer implements Serializable {
 		private String fax;
 	@Column(name="description")	
 		private String description;
-	@JsonBackReference
-	@OneToMany(mappedBy="customer")
+	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="customer", cascade = CascadeType.ALL)
 	 private Set<Load> loads ;
 	
 	public int getCustomerID() {

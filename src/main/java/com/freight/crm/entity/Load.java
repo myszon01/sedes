@@ -34,7 +34,6 @@ public class Load{
 		private String instruction;
 	
 	@ManyToOne
-	@JsonManagedReference
 	@JoinColumn(name="Customers_customer_id", nullable=false)
 	   private Customer customer;
 	

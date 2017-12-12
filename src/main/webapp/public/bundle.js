@@ -79,7 +79,7 @@
 	
 			_this.state = { customers: [], attributes: [], pageSize: 2, links: {} };
 			_this.updatePageSize = _this.updatePageSize.bind(_this);
-			//this.onCreate = this.onCreate.bind(this);
+			_this.onCreate = _this.onCreate.bind(_this);
 			_this.onDelete = _this.onDelete.bind(_this);
 			_this.onNavigate = _this.onNavigate.bind(_this);
 	
@@ -195,6 +195,7 @@
 				return React.createElement(
 					'div',
 					null,
+					'//',
 					React.createElement(CreateDialog, { attributes: this.state.attributes, onCreate: this.onCreate }),
 					React.createElement(CustomerList, { customers: this.state.customers,
 						links: this.state.links,

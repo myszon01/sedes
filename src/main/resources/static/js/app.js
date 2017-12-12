@@ -25,7 +25,7 @@ class App extends React.Component {
 		super(props);
 		this.state = {customers: [], attributes: [], pageSize: 2, links: {}};
 		this.updatePageSize = this.updatePageSize.bind(this);
-		//this.onCreate = this.onCreate.bind(this);
+		this.onCreate = this.onCreate.bind(this);
 		this.onDelete = this.onDelete.bind(this);
 		this.onNavigate = this.onNavigate.bind(this);
 
@@ -114,7 +114,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<CreateDialog attributes={this.state.attributes} onCreate={this.onCreate}/>
+				//<CreateDialog attributes={this.state.attributes} onCreate={this.onCreate}/>
 				<CustomerList customers={this.state.customers}
 							  links={this.state.links}
 							  pageSize={this.state.pageSize}
