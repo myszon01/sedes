@@ -23,34 +23,36 @@ public class CustomerController {
 	private ICustomerService customerService;
 	
 	@GetMapping("customer/{id}")
-	public ResponseEntity<Customer> getCustomerById(@PathVariable("id") Integer id) {
-		Customer customer = customerService.getCustomerById(id);
+	public ResponseEntity<Customer> getCustomerById(@PathVariable("id") Long id) {
+		Customer customer = customerService.findOne(id);
 		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
 	}
 	
 	@GetMapping("customers")
 	public ResponseEntity<List<Customer>> getAllCustomers() {
-		List<Customer> list = customerService.getAllCustomers();
+		List<Customer> list = (List<Customer>) customerService.findAll();
 		return new ResponseEntity<List<Customer>>(list, HttpStatus.OK);
 	}
 	@PostMapping("customer")
 	public ResponseEntity<Void> addCustomer(@RequestBody Customer customer, UriComponentsBuilder builder) {
-        boolean flag = customerService.addCustomer(customer);
+        boolean flag = false;
+		if (customerService.findOne(customer.getMcNumber()).equals(null)) { flag = false; } else { flag = true;}
         if (flag == false) {
         	return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-        }
+        }else customerService.save(customer);
+        
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(builder.path("/article/{id}").buildAndExpand(customer.getCustomerID()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
 	@PutMapping("customer")
 	public ResponseEntity<Customer> updateArticle(@RequestBody Customer customer) {
-		customerService.updateCustomer(customer);
+		customerService.save(customer);
 		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
 	}
 	@DeleteMapping("article/{id}")
-	public ResponseEntity<Void> deleteArticle(@PathVariable("id") Integer id) {
-		customerService.deleteCustomer(id);
+	public ResponseEntity<Void> deleteArticle(@PathVariable("id") Long id) {
+		customerService.delete(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 
