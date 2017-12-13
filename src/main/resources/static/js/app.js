@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import toastr from 'toastr';
+const root = '/api';
+const follow = require('./follow'); // function to hop multiple links by "rel"
+const client = require('./client');
 
 var Customer = React.createClass({
 	
@@ -15,6 +18,7 @@ var Customer = React.createClass({
 	      type: 'DELETE',
 	      success: function(result) {
 	        self.setState({display: false});
+	        
 	        
 	      },
 	      error: function(xhr, ajaxOptions, thrownError) {
@@ -66,13 +70,38 @@ var App = React.createClass({
 
 	  loadCustomersFromServer: function () {
 	    var self = this;
-	    
+	    /*
 	    $.ajax({
 	      url: "http://localhost:8080/api/customers"
 	    }).then(function (data) {
 	      self.setState({customers: data._embedded.customers});
-	    });
+	    });*/
+	    
+	   /* client({method: 'GET', path: '/api/customers'}).done(response => {
+            this.setState({customers: response.entity._embedded.customers});
+        });*/
+	    
+	    follow(client, root, [
+			{rel: 'customers', params: {size: 2}}]
+		).then(employeeCollection => {
+			return client({
+				method: 'GET',
+				path: '/api/profile/customers',
+				headers: {'Accept': 'application/schema+json'}
+			}).then(schema => {
+				this.schema = schema.entity;
+				return employeeCollection;
+			});
+		}).done(employeeCollection => {
+			this.setState({
+				employees: employeeCollection.entity._embedded.customers,
+				attributes: Object.keys(this.schema.properties),
+				pageSize: pageSize,
+				links: employeeCollection.entity._links});
+		});
 	  },
+	  
+	 
 
 	  getInitialState: function () {
 	    return {customers: []};
